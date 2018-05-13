@@ -1,0 +1,49 @@
+package com.chinatelling.psisystem.widget;
+
+import android.graphics.Color;
+import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.modle.SearchPromotion;
+import com.chinatelling.psisystem.util.DateUtils;
+
+import java.util.List;
+
+/**
+ * @author by dugc
+ * @package com.chinatelling.psisystem.widget
+ * @describe
+ * @date 2017/11/24    15:07
+ */
+public class PromotionQueryAdapter extends BaseQuickAdapter<SearchPromotion,BaseViewHolder> {
+
+
+    public PromotionQueryAdapter(List<SearchPromotion> data){
+        super( R.layout.promotion_adapter_layout, data);
+    }
+
+
+    @Override
+    protected void convert(BaseViewHolder helper, final SearchPromotion item) {
+        helper.setText(R.id.goods_name,item.getTitle())
+                .setText(R.id.tv_startdate, DateUtils.timedate(item.getStartDate()))
+                .setText(R.id.end_time,DateUtils.timedate(item.getEndDate()));
+        TextView tv_state =helper.getView(R.id.tv_state);
+
+        if(item.getFlag()==1){
+            tv_state.setText("未开始");
+            tv_state.setTextColor(Color.parseColor("#4FC980"));
+            tv_state.setBackgroundResource(R.drawable.green_shape);
+        }else if(item.getFlag()==2){
+            tv_state.setText("进行中");
+            tv_state.setTextColor(Color.parseColor("#F7B158"));
+            tv_state.setBackgroundResource(R.drawable.orange_shape);
+        }else if(item.getFlag()==3){
+            tv_state.setText("已过期");
+            tv_state.setTextColor(Color.parseColor("#AAAAAA"));
+            tv_state.setBackgroundResource(R.drawable.gray_shape);
+        }
+    }
+}

@@ -1,0 +1,81 @@
+package com.chinatelling.psisystem.widget;
+
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.activity_salePerson.AnnouncementFragment;
+import com.chinatelling.psisystem.modle.NoticeMessage;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * Created by dugc on 2017/8/7.
+ */
+
+public class AnnouncementMessageAdapter extends BaseQuickAdapter<NoticeMessage,BaseViewHolder> {
+
+
+    private long ti = 24 * 60 * 60 * 30*1000;
+    private long time2 = 24 * 60 * 60*1000;
+    private AnnouncementFragment context;
+    public AnnouncementMessageAdapter(AnnouncementFragment context, List<NoticeMessage> noticeMessageList) {
+        super(R.layout.announce_item_adapter, noticeMessageList);
+        this.context=context;
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, final NoticeMessage item) {
+        helper.setText(R.id.notice_dec, item.getContent());
+        TextView notice_time=helper.getView(R.id.notice_time);
+        TextView notice_bag = helper.getView(R.id.notice_bag);
+        TextView title =helper.getView(R.id.title);
+        title.setText(item.getTitle());
+        final RelativeLayout re1=helper.getView(R.id.re1);
+        if (item.getReadflag() == 0) {
+            notice_bag.setVisibility(View.VISIBLE);
+        } else if (item.getReadflag() == 1) {
+            notice_bag.setVisibility(View.GONE);
+        }
+        long date=item.getCreatetime();
+                long currentTime = System.currentTimeMillis();
+                long intervaltime=currentTime - date;
+                if (intervaltime < time2) {
+                    notice_time.setText(timeday(date));
+                } else if (time2 < intervaltime && intervaltime< ti) {
+                    notice_time.setText(Math.round(intervaltime / 60 / 60 /24)+ "天前");
+                }else if(intervaltime>ti){
+                    notice_time.setText(timedate(date));
+                }
+        re1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.initEvent(item);
+            }
+        });
+    }
+
+    public  String timedate(long time) {
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd");
+        if(time!=0){
+            String times = sdr.format(new Date(time));
+            return times;
+        }
+        return "";
+    }
+    public  String timeday(long time) {
+        SimpleDateFormat sdr = new SimpleDateFormat("HH:mm:ss");
+        if(time!=0){
+            String times = sdr.format(new Date(time));
+            return times;
+        }
+        return "";
+    }
+
+}

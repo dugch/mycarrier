@@ -1,0 +1,56 @@
+package com.chinatelling.psisystem.widget;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.modle.Province;
+
+import java.util.List;
+
+/**
+ * @author by dugc
+ * @package com.chinatelling.psisystem.widget
+ * @describe
+ * @date 2017/11/24    15:07
+ */
+
+public class ProvinceListAdapter extends BaseQuickAdapter<Province,BaseViewHolder> {
+
+
+    public ProvinceListAdapter(Context context, List<Province> data){
+        super( R.layout.province_adapter_layout, data);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, final Province item) {
+        final CheckBox checkBox =helper.getView(R.id.province_check);
+        helper.setText(R.id.province_check,item.getPROVINCENAME());
+        if(item.ischecked()){
+            checkBox.setChecked(true);
+            checkBox.setTextColor(Color.parseColor("#D93D41"));
+        }else{
+            checkBox.setChecked(false);
+            checkBox.setTextColor(Color.parseColor("#333333"));
+        }
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!checkBox.isPressed()){
+                    return;
+                }
+                item.setIschecked(isChecked);
+                if(isChecked){
+                    checkBox.setTextColor(Color.parseColor("#D93D41"));
+                }else{
+                    checkBox.setTextColor(Color.parseColor("#333333"));
+                }
+            }
+        });
+    }
+}

@@ -1,0 +1,64 @@
+package com.chinatelling.psisystem.widget;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.modle.ReportQuery;
+import com.chinatelling.psisystem.util.DateUtils;
+
+import java.util.List;
+
+/**
+ * @author by dugc
+ * @package com.chinatelling.psisystem.widget
+ * @describe
+ * @date 2017/11/24    15:07
+ */
+
+public class ReportQueryAdapter extends BaseQuickAdapter<ReportQuery,BaseViewHolder> {
+
+
+    public ReportQueryAdapter(Context context, List<ReportQuery> data){
+        super( R.layout.report_query_adapter, data);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, ReportQuery item) {
+              helper.setText(R.id.report_name ,item.getGoodsTitle())
+                      .setText(R.id.report_imei,"串码："+item.getSn())
+                      .setText(R.id.report_camp,"活动："+item.getTitle())
+                      .setText(R.id.report_data,DateUtils.totime(item.getCreateTime()));
+        TextView  point =helper.getView(R.id.point);
+        TextView  report_state =helper.getView(R.id.report_state);
+        if(item.getState()==2){
+            if(item.getAmount()!=null){
+                point.setText(item.getAmount());
+            }
+        }else{
+            point.setText("暂无");
+        }
+        switch (item.getState()){
+            case -1:
+                report_state.setText("未通过");
+                report_state.setTextColor(Color.parseColor("#C45764"));
+                break;
+            case 1:
+                report_state.setText("审核中");
+                report_state.setTextColor(Color.parseColor("#F6AC4E"));
+                break;
+            case 2:
+                report_state.setText("已通过");
+                report_state.setTextColor(Color.parseColor("#44C374"));
+                break;
+            case 3:
+                report_state.setText("未通过");
+                report_state.setTextColor(Color.parseColor("#C45764"));
+                break;
+        }
+
+    }
+}

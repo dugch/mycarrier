@@ -1,0 +1,43 @@
+package com.chinatelling.psisystem.widget;
+
+import android.content.Context;
+import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.modle.ClerkInfoQuery;
+
+import java.util.List;
+
+/**
+ * @author by dugc
+ * @package com.chinatelling.psisystem.widget
+ * @describe
+ * @date 2017/11/24    15:07
+ */
+
+public class BranchClerkInfoAdapter extends BaseQuickAdapter<ClerkInfoQuery,BaseViewHolder> {
+
+    private Context context;
+    public BranchClerkInfoAdapter(Context context, List<ClerkInfoQuery> data){
+        super( R.layout.clerk_info_adapter_layout, data);
+        this.context=context;
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, final ClerkInfoQuery item) {
+        helper.setText(R.id.tv_realname,item.getRealName())
+                .setText(R.id.tv_phone,item.getPhoneNumber())
+                .setText(R.id.tv_jobnum,item.getStaffCode())
+                .setText(R.id.tv_sale,item.getBrandName())
+                .setText(R.id.tv_office,item.getCompanyName())
+                .setText(R.id.tv_storename,item.getStoreTitle());
+        TextView  tv_job = helper.getView(R.id.tv_job);
+        if(item.getPost()==1){
+            tv_job.setText("店员");
+        }else if(item.getPost()==2){
+            tv_job.setText("促销员");
+        }
+    }
+}

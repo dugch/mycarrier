@@ -1,0 +1,39 @@
+package com.chinatelling.psisystem.widget;
+
+import android.graphics.Color;
+import android.widget.LinearLayout;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.modle.ReportDetail;
+
+import java.util.List;
+
+/**
+ * @author by dugc
+ * @package com.chinatelling.psisystem.widget
+ * @describe
+ * @date 2017/11/24    15:07
+ */
+
+public class ReportFormsDetailAdapter extends BaseQuickAdapter<ReportDetail,BaseViewHolder> {
+
+
+    public ReportFormsDetailAdapter(List<ReportDetail> data){
+        super( R.layout.report_detail_adapter, data);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, final ReportDetail item) {
+        helper.setText(R.id.shopname,item.getStore())
+                .setText(R.id.realname, item.getRealname())
+                .setText(R.id.report_count,item.getPersonal())
+                .setText(R.id.vai_count,item.getApprove())
+                .setText(R.id.point,item.getTotal());
+        LinearLayout line =helper.getView(R.id.line);
+        if(helper.getLayoutPosition()/2==0){
+            line.setBackgroundColor(Color.parseColor("#FFF6F7"));
+        }
+    }
+}

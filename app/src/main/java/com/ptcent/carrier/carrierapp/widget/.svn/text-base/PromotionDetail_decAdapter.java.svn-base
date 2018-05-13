@@ -1,0 +1,28 @@
+package com.chinatelling.psisystem.widget;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.modle.LadderPrice;
+
+import java.util.List;
+
+/**
+ * @author by dugc
+ * @package com.chinatelling.psisystem.widget
+ * @describe
+ * @date 2017/11/24    15:07
+ */
+
+public class PromotionDetail_decAdapter extends BaseQuickAdapter<LadderPrice,BaseViewHolder> {
+
+
+    public PromotionDetail_decAdapter(List<LadderPrice> data){
+        super( R.layout.promotion_detail_dec_adapter, data);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, final LadderPrice item) {
+        helper.setText(R.id.goods_name, item.getLowlimit()+"-"+item.getUplimit()+"("+ item.getAmount()+")");
+    }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="line_color">#8ca9de</color>
+    <color name="theme_color">#398DEE</color>
+    <color name="theme_down_textcolor">#EEF3FA</color>
+    <color name="theme_textcolor">#333333</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="light_gray">#CCCCCC</color>
+    <color name="topbar_color">#EEEEEE</color>
+    <color name="back_gray">#EEEEEE</color>
+    <color name="text_back_gray">#cbcbcb</color>
+    <color name="text_number_gray">#9f9f9f</color>
+    <color name="text_gray">#d0d0d0</color>
+    <color name="gray0">#F0EFF5</color>
+    <color name="gray1">#f1f1f1</color>
+    <color name="gray2">#e1e1e1</color>
+    <color name="text_black">#333333</color>
+    <color name="dialog_back">#e7ffffff</color>
+    <color name="xxx">#00fffefe</color>
+    <color name="blue">#257DCD</color>
+    <color name="text_blue">#4ea8fa</color>
+    <color name="red">#398DEE</color>
+    <color name="orange">#f6430c</color>
+    <color name="commbut">#f0e4e4e4</color>
+
+    <color name="gray_bg">#EFEFF4</color>
+    <color name="employ_zz">#FF9933</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+</resources>

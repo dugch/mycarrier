@@ -1,0 +1,44 @@
+package com.chinatelling.psisystem.widget;
+
+import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chinatelling.psisystem.R;
+import com.chinatelling.psisystem.modle.PromotionDetail;
+
+import java.util.List;
+
+/**
+ * @author by dugc
+ * @package com.chinatelling.psisystem.widget
+ * @describe
+ * @date 2017/11/24    15:07
+ */
+
+public class PromotionDetailAdapter extends BaseQuickAdapter<PromotionDetail,BaseViewHolder> {
+
+    private Context context;
+    private String brand;
+    public PromotionDetailAdapter(Context context,List<PromotionDetail> data){
+        super( R.layout.promotion_detail_adapter_layout, data);
+        this.context=context;
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, final PromotionDetail item) {
+        helper.setText(R.id.goods_name,item.getGoodsName());
+        TextView point =helper.getView(R.id.point);
+        RecyclerView recycler =helper.getView(R.id.recycler);
+            point.setText(item.getAmount());
+            if(item.getItems().size()!=0){
+                PromotionDetail_decAdapter adapter =new PromotionDetail_decAdapter(item.getItems());
+                recycler.setLayoutManager(new GridLayoutManager(context,3));
+                recycler.setAdapter(adapter);
+            }
+
+    }
+}

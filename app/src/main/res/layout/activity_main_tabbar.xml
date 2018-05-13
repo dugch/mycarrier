@@ -1,0 +1,99 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:background="#F8F8F8"
+    android:paddingTop="3dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+ <RelativeLayout
+        android:id="@+id/index_re"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+         >
+
+        <TextView
+            android:id="@+id/index_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/index_img"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/text_size_15sp"
+            android:layout_marginTop="3px"
+            android:text="书店"
+            />
+        <ImageView
+            android:id="@+id/index_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/home_light"
+            android:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/shop_re"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/shop_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shop_img"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_15sp"
+            android:textColor="#7F7F7F"
+            android:layout_marginTop="3px"
+            android:text="微聊" />
+
+        <ImageView
+            android:id="@+id/shop_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/message_nomal" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/me_re"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/me_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/me_img"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_15sp"
+            android:textColor="#7F7F7F"
+            android:layout_marginTop="3px"
+            android:text="我的" />
+
+        <ImageView
+            android:id="@+id/me_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/me_normal" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
